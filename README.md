@@ -235,8 +235,7 @@ RewardGuard helps ensure your models learn what you intend, not just how to maxi
 ## 🤝 Support
 
 - **Community (Free):** https://www.youtube.com/@RewardGuard
-- **Email (Premium):** giovan@rewardguard.dev
-- **Chat (Premium):** Available in dashboard
+
 
 ---
 
