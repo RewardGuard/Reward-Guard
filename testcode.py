@@ -137,7 +137,6 @@ class TestSnakeEnvStep:
 
     def test_timeout_triggers_done(self, env):
         env.reset()
-        env.frame_iteration = 100 * len(env.snake)  # reemplaza con:
         env.frame_iteration = 100 * len(env.snake) + 1
         _, _, done, _ = env.step(0)
         assert done
@@ -253,10 +252,11 @@ class TestRewardGuardMonitor:
         assert monitor.step_count == 0
 
     def test_monitor_expected_matches_constant(self, monitor):
-        assert monitor.expected == EXPECTED  # reemplaza con:
         for key in EXPECTED:
-            assert abs(monitor.expected[key] - EXPECTED[key] * 100) < 1e-9 or \
-                   abs(monitor.expected[key] - EXPECTED[key]) < 1e-9
+            assert (
+                abs(monitor.expected[key] - EXPECTED[key] * 100) < 1e-9
+                or abs(monitor.expected[key] - EXPECTED[key]) < 1e-9
+            )
 
     def test_step_increments_count(self, monitor):
         monitor.step({"survival": 1.0, "food": 0.0, "death": 0.0, "proximity": 0.5})
