@@ -137,7 +137,10 @@ class TestSnakeEnvStep:
 
     def test_timeout_triggers_done(self, env):
         env.reset()
-        env.frame_iteration = 100 * len(env.snake) + 1
+        # step() increments frame_iteration first, then inserts head (snake len becomes 4)
+        # condition: frame_iteration > 100 * len(snake) → need > 400 after increment
+        # so set to 400 → after +1 = 401 > 400 = True
+        env.frame_iteration = 400
         _, _, done, _ = env.step(0)
         assert done
 
