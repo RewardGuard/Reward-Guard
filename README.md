@@ -225,10 +225,9 @@ RewardGuard helps ensure your models learn what you intend, not just how to maxi
 
 ## 📚 Documentation
 
-- **Website:** [Coming Soon]
-- **API Docs:** [Coming Soon]
-- **Tutorials:** [Coming Soon]
-- **Docs:** [https://docs.rewardguard.dev](https://docs.rewardguard.dev)
+- **Website:** [rewardguard.dev]
+- **Tutorials:** https://youtu.be/ySif89GQ3N4
+- **Docs:** [https://rewardguard.dev/docs](https://rewardguard.dev/docs)
 
 ---
 
@@ -261,8 +260,8 @@ RewardGuard helps ensure your models learn what you intend, not just how to maxi
 
 - [Get Started Free](#-quick-start)
 - [Upgrade to Premium](#-pricing)
-- [View Examples](examples/)
-- [Read the Docs](#-documentation)
+- [View Examples](rewardguard.dev/demo)
+- [Read the Docs](rewardguard.dev/docs)
 
 ---
 
