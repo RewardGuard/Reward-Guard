@@ -219,7 +219,7 @@ RewardGuard helps ensure your models learn what you intend, not just how to maxi
 | Live monitoring | ❌ | ✅ |
 | Unlimited training steps | ❌ | ✅ |
 | Priority support | ❌ | ✅ |
-| **Price** | **$0/month** | **$99/month** |
+| **Price** | **$0/month** | **$starting on 20$** |
 
 ---
 
