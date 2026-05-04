@@ -1,6 +1,6 @@
 """
-Tests for Snake RL + RewardGuard integration (testcode.py).
-Run with: pytest test_snake.py -v
+Tests for Snake RL + RewardGuard integration.
+Run with: pytest testcode.py -v
 """
 
 import os
@@ -10,13 +10,11 @@ import random
 import pytest
 import numpy as np
 from collections import defaultdict
-from unittest.mock import patch, MagicMock
 
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
 
-# ── Import the modules under test ──────────────────────────────────────────────
-from testcode import (
+from snake_env import (
     SnakeEnv,
     QLearningAgent,
     Direction,
@@ -122,12 +120,11 @@ class TestSnakeEnvStep:
             assert rewards["survival"] == 1.0
 
     def test_death_reward_on_collision(self, env):
-        """Force a wall collision and verify death reward."""
         env.reset()
         env.direction = Direction.LEFT
         env.head = Point(0, GRID_H // 2)
         env.snake = [env.head]
-        _, rewards, done, _ = env.step(0)  # straight → hits wall
+        _, rewards, done, _ = env.step(0)
         assert done
         assert rewards["death"] == -50.0
 
@@ -150,7 +147,6 @@ class TestSnakeEnvStep:
         assert env.reward_weights["food"] == 5.0
 
     def test_weighted_total_reward(self, env):
-        """total_reward must equal sum of weighted components."""
         env.reset()
         env.set_reward_weights({"survival": 2.0, "food": 3.0, "death": 1.0, "proximity": 1.0})
         _, rewards, done, info = env.step(0)
@@ -198,7 +194,7 @@ class TestQLearningAgent:
         ag = QLearningAgent(epsilon=1.0)
         state = (0,) * 11
         actions = {ag.act(state) for _ in range(100)}
-        assert len(actions) > 1, "With epsilon=1 should explore"
+        assert len(actions) > 1
 
     def test_epsilon_zero_greedy(self):
         ag = QLearningAgent(epsilon=0.0)
@@ -218,7 +214,6 @@ class TestQLearningAgent:
         s2 = (1,) * 11
         agent.q_table[s2] = np.array([999.0, 999.0, 999.0])
         agent.learn(s, 0, -50.0, s2, done=True)
-        # target = reward only, so q shouldn't approach 999
         assert agent.q_table[s][0] < 100
 
     def test_epsilon_decay(self, agent):
@@ -292,8 +287,7 @@ class TestRewardGuardMonitor:
 
     def test_expected_percentages_sum_to_100(self):
         total = sum(EXPECTED.values())
-        assert abs(total - 1.0) < 1e-9 or abs(total - 100.0) < 1e-9, \
-            "EXPECTED values must sum to 1.0 or 100.0"
+        assert abs(total - 1.0) < 1e-9 or abs(total - 100.0) < 1e-9
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -306,7 +300,6 @@ class TestFullEpisodeIntegration:
         env = SnakeEnv(render=False)
         agent = QLearningAgent()
         monitor = rg.Monitor(expected=EXPECTED, tolerance=5.0, window=200)
-
         state = env.reset()
         done = False
         steps = 0
@@ -320,7 +313,6 @@ class TestFullEpisodeIntegration:
             )
             state = next_state
             steps += 1
-
         assert steps > 0
         assert monitor.step_count == steps
         env.close()
@@ -329,7 +321,6 @@ class TestFullEpisodeIntegration:
         env = SnakeEnv(render=False)
         agent = QLearningAgent()
         monitor = rg.Monitor(expected=EXPECTED, tolerance=5.0, window=200)
-
         total_steps = 0
         for _ in range(3):
             state = env.reset()
@@ -346,6 +337,5 @@ class TestFullEpisodeIntegration:
                 state = next_state
                 ep_steps += 1
             total_steps += ep_steps
-
         assert monitor.step_count == total_steps
         env.close()
