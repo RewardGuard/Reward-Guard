@@ -1,0 +1,6 @@
+pygame==2.6.1
+numpy==2.4.4
+rewardguard==1.0.4
+rewardguard-premium==2.0.10
+certifi==2026.4.22
+ 
