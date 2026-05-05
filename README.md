@@ -105,6 +105,11 @@ REWARDGUARD ANALYSIS REPORT
    • reward_b: Increase weight by ~15.2%
 ```
 
+    Here is a image of the report:
+    
+    <img width="1934" height="1673" alt="snake_session_report" src="https://github.com/user-attachments/assets/2dd51791-5515-47c3-8387-56dd523ca235" />
+
+
 ### Premium Version Example
 
 ```python
