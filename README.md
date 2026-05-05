@@ -110,6 +110,10 @@ REWARDGUARD ANALYSIS REPORT
     <img width="1934" height="1673" alt="snake_session_report" src="https://github.com/user-attachments/assets/2dd51791-5515-47c3-8387-56dd523ca235" />
 
 
+    Here is a video of a snake rl that uses reward guard:
+
+    <img width="398" height="380" alt="rewardguard_demo" src="https://github.com/user-attachments/assets/74c1f5b0-31e6-49d9-8e5d-b6fd0aabe32d" />
+
 ### Premium Version Example
 
 ```python
