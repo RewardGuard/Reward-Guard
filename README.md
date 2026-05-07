@@ -2,7 +2,7 @@
 
 **Trust Your AI Training**
 
-RewardGuard is an AI alignment and safety tooling company focused on reinforcement learning systems. We provide reward auditing libraries that help developers detect reward hacking, misalignment, and training degradation early in the training process.
+RewardGuard is an AI alignment and safety tooling company focused on reinforcement learning systems. We provide reward auditing libraries that help developers detect reward hacking, misalignment, and training degradation early in the training process automaticly.
 
 ---
 
